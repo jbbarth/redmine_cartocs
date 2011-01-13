@@ -1,0 +1,30 @@
+<% content_for :header_tags do -%>
+  <%= stylesheet_link_tag 'cartocs', :plugin => :redmine_cartocs %>
+<% end %>
+
+<%
+begin
+  @application = Application.find(@project.identifier)
+  @machines = @application.machines.sort_by{|m|m.nom.downcase} if @application
+rescue ActiveResource::ResourceNotFound
+rescue Errno::ECONNREFUSED
+rescue ActiveResource::TimeoutError
+end
+-%>
+<% if @application.present? -%>
+<div class="servers box">
+  <div class="contextual">
+    <%= link_to "#{@application.nom} sur CartoCS", (Application.site+"/applications/#{@application.id}").to_s %>
+  </div>
+  <h3><%=l(:label_server_plural)%></h3>  
+  <p>
+    <% if @machines.present? -%>
+      <%= @machines.map do |machine|
+        link_to machine.nom, (Application.site+"/machines/#{machine.id}").to_s
+      end.join(", ") %>
+    <% else -%>
+      <%= l(:label_no_data) %>
+    <% end -%>
+  </p>
+</div>
+<% end -%>
