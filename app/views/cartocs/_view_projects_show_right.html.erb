@@ -9,6 +9,7 @@ begin
 rescue ActiveResource::ResourceNotFound
 rescue Errno::ECONNREFUSED
 rescue ActiveResource::TimeoutError
+rescue ActiveResource::ClientError
 end
 -%>
 <% if @application.present? -%>
