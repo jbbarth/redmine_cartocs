@@ -15,13 +15,13 @@ end
 <% if @application.present? -%>
 <div class="servers box">
   <div class="contextual">
-    <%= link_to "#{@application.nom} sur CartoCS", (Application.public_url+"/applications/#{@application.id}").to_s %>
+    <%= link_to "#{@application.nom} sur CartoCS", Application.public_url+"/applications/#{@application.id}" %>
   </div>
   <h3><%=l(:label_server_plural)%></h3>  
   <p>
     <% if @machines.present? -%>
       <%= @machines.map do |machine|
-        link_to machine.nom, (Application.public_url+"/machines/#{machine.id}").to_s
+        link_to machine.nom, Application.public_url+"/machines/#{machine.id}"
       end.join(", ") %>
     <% else -%>
       <%= l(:label_no_data) %>
