@@ -2,12 +2,13 @@ class Application < ActiveResource::Base
   self.site = Setting["plugin_redmine_cartocs"]["private_url"]
   self.timeout = 5
 
-  def self.public_url
+  def self.public_url(path="")
     settings = Setting["plugin_redmine_cartocs"]
-    if settings["public_url"].present?
+    host = if settings["public_url"].present?
       settings["public_url"]
     else
       settings["private_url"]
     end
+    (URI(host)+path).to_s
   end
 end
