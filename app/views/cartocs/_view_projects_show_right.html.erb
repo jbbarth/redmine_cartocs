@@ -4,7 +4,7 @@
 
 <%
 begin
-  @application = Application.find(@project.identifier)
+  @application = Application.find(@project.identifier) if Application.site.present?
   @machines = @application.machines.sort_by{|m|m.nom.downcase} if @application
 rescue ActiveResource::ResourceNotFound
 rescue Errno::ECONNREFUSED
