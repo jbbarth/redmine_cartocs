@@ -9,6 +9,7 @@ Redmine::Plugin.register :redmine_cartocs do
   requires_redmine :version_or_higher => '1.0.5'
   version '0.1'
   settings :default => {
-    'url' => 'http://localhost:3001/',
+    'private_url' => 'http://localhost:3000/',
+    'public_url'  => 'http://cartocs-test.app.ac.centre-serveur.i2/'
   }, :partial => 'settings/cartocs_settings'
 end

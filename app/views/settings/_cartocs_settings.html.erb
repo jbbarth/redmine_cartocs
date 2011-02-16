@@ -1,6 +1,10 @@
 <fieldset>
 <p>
-  <label><%= l(:field_url) %></label> 
-  <%= text_field_tag 'settings[url]', @settings['url'] %>
+  <label><%= l(:field_private_url) %></label> 
+  <%= text_field_tag 'settings[private_url]', @settings['private_url'] %>
+</p>
+<p>
+  <label><%= l(:field_public_url) %></label> 
+  <%= text_field_tag 'settings[public_url]', @settings['public_url'] %>
 </p>
 </fieldset>
