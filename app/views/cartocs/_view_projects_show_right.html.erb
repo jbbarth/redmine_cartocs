@@ -5,7 +5,7 @@
 <%
 begin
   @application = Application.find(@project.identifier) if Application.site.present?
-  @machines = @application.machines.sort_by{|m|m.nom.downcase} if @application
+  @machines = @application.machines.sort_by{|m|m.name.downcase} if @application
 rescue ActiveResource::ResourceNotFound
 rescue Errno::ECONNREFUSED
 rescue ActiveResource::TimeoutError
@@ -15,13 +15,13 @@ end
 <% if @application.present? -%>
 <div class="servers box">
   <div class="contextual">
-    <%= link_to "#{@application.nom} sur CartoCS", Application.public_url("/applications/#{@application.id}") %>
+    <%= link_to "#{@application.name} sur CartoCS", Application.public_url("/applications/#{@application.id}") %>
   </div>
   <h3><%=l(:label_server_plural)%></h3>  
   <p>
     <% if @machines.present? -%>
       <%= @machines.map do |machine|
-        link_to machine.nom, Application.public_url("/machines/#{machine.id}")
+        link_to machine.name, Application.public_url("/machines/#{machine.id}")
       end.join(", ") %>
     <% else -%>
       <%= l(:label_no_data) %>
