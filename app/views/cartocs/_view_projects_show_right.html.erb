@@ -24,8 +24,8 @@ end
     <strong>Instance "<%= instance.name %>"</strong>
     <% if instance.machines.present? -%>
     <ul>
-      <% instance.application_urls.each do |url| %>
-      <li><%= link_to url, url, :class => "external" %></li>
+      <% instance.application_urls.each do |app_url| %>
+      <li><%= link_to app_url.url, app_url.url, :class => "external" %></li>
       <% end %>
       <li><%= instance.machines.sort_by{|m|m.name.downcase}.map do |machine|
         link_to machine.name, Application.public_url("/machines/#{machine.id}")
