@@ -36,4 +36,19 @@ end
   <% end %>
   <% end %>
 </div>
+
+<div class="dokuwiki box">
+  <h3>Dokuwiki</h3>  
+  <% if @application.dokuwiki_pages.present? %>
+  <ul>
+  <% @application.dokuwiki_pages.each do |page| %>
+    <% site = "http://dokuwiki.application.ac.centre-serveur.i2" %>
+    <li><%= link_to page.gsub("documentation_generale:",""), "#{site}/doku.php?id=#{page}", :class => "external" %></li>
+  <% end -%>
+  </ul>
+  <% else -%>
+    <p><em><%= l(:label_no_data) %></em></p>
+  <% end -%>
+</div>
+
 <% end -%>
