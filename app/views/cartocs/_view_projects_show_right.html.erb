@@ -20,7 +20,7 @@ end
   <h3><%=l(:label_server_plural)%></h3>  
   <% if @instances.present? %>
   <% @instances.each do |instance| %>
-  <p>
+  <div>
     <strong>Instance "<%= instance.name %>"</strong>
     <ul style="margin:0 0.5em">
       <% instance.application_urls.each do |app_url| %>
@@ -28,11 +28,11 @@ end
       <% end %>
       <% if instance.machines.present? -%>
       <li><%= instance.machines.sort_by{|m|m.name.downcase}.map do |machine|
-        link_to machine.name, Application.public_url("/machines/#{machine.id}")
-      end.join(", ") %></li>
+        link_to machine.name, Application.public_url("/machines/#{machine.id}"), :class => "icon icon-server"
+      end.join(" ") %></li>
       <% end -%>
     </ul>
-  </p>
+  </div>
   <% end %>
   <% end %>
 </div>
