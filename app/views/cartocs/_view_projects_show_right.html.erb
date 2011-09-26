@@ -26,9 +26,9 @@ end
       <% instance.application_urls.each do |app_url| %>
       <li><%= link_to app_url.url, app_url.url, :class => "external" %></li>
       <% end %>
-      <% if instance.machines.present? -%>
-      <li><%= instance.machines.sort_by{|m|m.name.downcase}.map do |machine|
-        link_to machine.name, Application.public_url("/machines/#{machine.id}"), :class => "icon icon-server"
+      <% if instance.servers.present? -%>
+      <li><%= instance.servers.sort_by{|m|m.name.downcase}.map do |machine|
+        link_to machine.name, Application.public_url("/servers/#{machine.id}"), :class => "icon icon-server"
       end.join(" ") %></li>
       <% end -%>
     </ul>
