@@ -6,8 +6,8 @@ Redmine::Plugin.register :redmine_cartocs do
   author 'Jean-Baptiste BARTH'
   description 'Cartocs integration'
   author_url 'mailto:jeanbaptiste.barth@gmail.com'
-  requires_redmine :version_or_higher => '1.0.5'
-  version '0.1'
+  requires_redmine :version_or_higher => '2.0.0'
+  version '0.2'
   settings :default => {
     'private_url' => 'http://cartocs.app.ac.cs/',
     'public_url'  => 'http://cartocs.application.ac.centre-serveur.i2/'
