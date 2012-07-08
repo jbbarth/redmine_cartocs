@@ -4,7 +4,7 @@
 
 <%
 begin
-  @application = Application.find(@project.identifier) if Application.site.present?
+  @application = Cartocs::Application.find(@project.identifier) if Cartocs::Application.site.present?
   @instances = @application.application_instances if @application
 rescue ActiveResource::ResourceNotFound
 rescue Errno::ECONNREFUSED
@@ -17,7 +17,7 @@ end
 <% if @application.present? -%>
 <div class="servers box">
   <div class="contextual">
-    <%= link_to "#{@application.name} sur CartoCS", Application.public_url("/applications/#{@application.id}") %>
+    <%= link_to "#{@application.name} sur CartoCS", Cartocs::Application.public_url("/applications/#{@application.id}") %>
   </div>
   <h3><%=l(:label_server_plural)%></h3>  
   <% if @instances.present? %>
@@ -30,7 +30,7 @@ end
       <% end %>
       <% if instance.servers.present? -%>
       <li><%= instance.servers.sort_by{|m|m.name.downcase}.map do |machine|
-        link_to machine.name, Application.public_url("/servers/#{machine.id}"), :class => "icon icon-server"
+        link_to machine.name, Cartocs::Application.public_url("/servers/#{machine.id}"), :class => "icon icon-server"
       end.join(" ") %></li>
       <% end -%>
     </ul>
