@@ -10,6 +10,8 @@ rescue ActiveResource::ResourceNotFound
 rescue Errno::ECONNREFUSED
 rescue ActiveResource::TimeoutError
 rescue ActiveResource::ClientError
+rescue Exception => e
+  Rails.logger.error "redmine_cartocs plugin: #{e.message} : #{e.backtrace}"
 end
 -%>
 <% if @application.present? -%>
