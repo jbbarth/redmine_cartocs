@@ -1,5 +1,6 @@
 class Application < ActiveResource::Base
   self.site = Setting["plugin_redmine_cartocs"]["private_url"]
+  self.headers['X-Api-Token'] = ENV['CARTOCS_TOKEN'] if ENV['CARTOCS_TOKEN'].present?
   self.timeout = 5
 
   def self.public_url(path="")
