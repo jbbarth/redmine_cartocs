@@ -41,7 +41,7 @@ end
 
 <div class="dokuwiki box">
   <h3>Dokuwiki</h3>  
-  <% if @application.dokuwiki_pages.present? %>
+  <% if @application.respond_to?(:dokuwiki_pages) && @application.dokuwiki_pages.present? %>
   <ul>
   <% @application.dokuwiki_pages.each do |page| %>
     <% site = "http://dokuwiki.application.ac.centre-serveur.i2" %>
