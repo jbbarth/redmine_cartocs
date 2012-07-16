@@ -30,8 +30,8 @@ end
       <% end %>
       <% if instance.servers.present? -%>
       <li><%= instance.servers.sort_by{|m|m.name.downcase}.map do |machine|
-        link_to machine.name, Cartocs::Application.public_url("/servers/#{machine.id}"), :class => "icon icon-server"
-      end.join(" ") %></li>
+        link_to h(machine.name), Cartocs::Application.public_url("/servers/#{machine.id}"), :class => "icon icon-server"
+      end.join(" ").html_safe %></li>
       <% end -%>
     </ul>
   </div>
