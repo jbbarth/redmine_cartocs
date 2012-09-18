@@ -6,10 +6,6 @@
 begin
   @application = Cartocs::Application.find(@project.identifier) if Cartocs::Application.site.present?
   @instances = @application.application_instances if @application
-rescue ActiveResource::ResourceNotFound
-rescue Errno::ECONNREFUSED
-rescue ActiveResource::TimeoutError
-rescue ActiveResource::ClientError
 rescue Exception => e
   Rails.logger.error "redmine_cartocs plugin: #{e.message} : #{e.backtrace}"
 end
