@@ -3,5 +3,4 @@ en:
   label_server_plural: "Servers"
   field_private_url: "Private URL"
   field_public_url: "Public URL"
-  project_module_cartocs: "Link with Cartoque"
-  permission_view_items_on_project_overview: "View configuration items on project overview"
+  permission_view_cartocs_items_on_project_overview: "View Cartocs items on project overview"

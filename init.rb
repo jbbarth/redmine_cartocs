@@ -12,7 +12,7 @@ Redmine::Plugin.register :redmine_cartocs do
     'private_url' => 'http://cartocs.app.ac.cs/',
     'public_url'  => 'http://cartocs.application.ac.centre-serveur.i2/'
   }, :partial => 'settings/cartocs_settings'
-  project_module :cartocs do
-    permission :view_items_on_project_overview, {}
+  project_module :issue_tracking do
+    permission :view_cartocs_items_on_project_overview, {}
   end
 end
