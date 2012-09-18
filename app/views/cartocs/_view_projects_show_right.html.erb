@@ -1,3 +1,5 @@
+<% if User.current.allowed_to?(:view_items_on_project_overview, @project) %>
+
 <% content_for :header_tags do -%>
   <%= stylesheet_link_tag 'cartocs', :plugin => :redmine_cartocs %>
 <% end %>
@@ -48,5 +50,7 @@ end
     <p><em><%= l(:label_no_data) %></em></p>
   <% end -%>
 </div>
+
+<% end -%>
 
 <% end -%>
